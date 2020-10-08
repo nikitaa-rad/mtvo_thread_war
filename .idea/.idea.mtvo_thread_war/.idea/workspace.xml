@@ -10,8 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fb967739-33e1-4829-8913-679bce5bef9a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mtvo_thread_war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mtvo_thread_war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EnemyPull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EnemyPull.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameField.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +99,7 @@
       <workItem from="1601928224583" duration="1103000" />
       <workItem from="1602013610643" duration="7414000" />
       <workItem from="1602097922764" duration="13326000" />
-      <workItem from="1602178291368" duration="16549000" />
+      <workItem from="1602178291368" duration="17258000" />
     </task>
     <servers />
   </component>
@@ -138,25 +136,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="501" y="162" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1602179188717" />
-    <state width="1398" height="443" key="GridCell.Tab.0.bottom" timestamp="1602198180019">
+    <state width="1398" height="476" key="GridCell.Tab.0.bottom" timestamp="1602198599652">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="443" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1602198180019" />
+    <state width="1398" height="476" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1602198599651" />
     <state width="1358" height="233" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1601361551937" />
-    <state width="1398" height="443" key="GridCell.Tab.0.center" timestamp="1602198180018">
+    <state width="1398" height="476" key="GridCell.Tab.0.center" timestamp="1602198599650">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="443" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1602198180018" />
+    <state width="1398" height="476" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1602198599650" />
     <state width="1358" height="233" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1601361551936" />
-    <state width="1398" height="443" key="GridCell.Tab.0.left" timestamp="1602198180018">
+    <state width="1398" height="476" key="GridCell.Tab.0.left" timestamp="1602198599650">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="443" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1602198180018" />
+    <state width="1398" height="476" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1602198599650" />
     <state width="1358" height="233" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1601361551935" />
-    <state width="1398" height="443" key="GridCell.Tab.0.right" timestamp="1602198180019">
+    <state width="1398" height="476" key="GridCell.Tab.0.right" timestamp="1602198599651">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="443" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1602198180019" />
+    <state width="1398" height="476" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1602198599651" />
     <state width="1358" height="233" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1601361551937" />
     <state width="1398" height="445" key="GridCell.Tab.1.bottom" timestamp="1602197740406">
       <screen x="0" y="0" width="1440" height="900" />

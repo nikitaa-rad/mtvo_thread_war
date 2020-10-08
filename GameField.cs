@@ -1,6 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Threading;
 
 namespace mtvo_thread_war
@@ -14,15 +12,15 @@ namespace mtvo_thread_war
         public const string KilledChar = "R";
 
         public const int MaxMiss = 30;
-        
+
         private readonly object fieldLock = new object();
-        
+
         private int miss;
         private int hit;
         private int fieldWith;
         private int fieldHigh;
         private Actor[,] field;
-        
+
         private Actor gun;
         private Bullet bullet;
 
@@ -48,7 +46,6 @@ namespace mtvo_thread_war
         public void Start()
         {
             Thread thread = new Thread(PullEnemies);
-                
             thread.Start();
             
             while (true)
@@ -112,15 +109,17 @@ namespace mtvo_thread_war
                 }
                 
                 Actor blunk = new Actor(bullet.X(), bullet.Y(),BlunkSpaceChar);
+                
                 field[bullet.X(), bullet.Y()] = blunk;
                 Console.SetCursorPosition(bullet.X(), bullet.Y());
                 Console.Write(BlunkSpaceChar);
 
                 bullet.SetCoordinates(bullet.X(), bullet.Y() - 1);
 
-                field[bullet.X(), bullet.Y()] = bullet;
-                Console.SetCursorPosition(bullet.X(), bullet.Y());
-                Console.Write(bullet.symbol);
+                // field[bullet.X(), bullet.Y()] = bullet;
+                // Console.SetCursorPosition(bullet.X(), bullet.Y());
+                // Console.Write(bullet.symbol);
+                Set(bullet);
             }
         }
         
@@ -132,9 +131,10 @@ namespace mtvo_thread_war
                 
                 enemy.SetCoordinates(enemy.X() + direction, enemy.Y() + 1);
 
-                field[enemy.X(), enemy.Y()] = enemy;
-                Console.SetCursorPosition(enemy.X(), enemy.Y());
-                Console.Write(enemy.symbol);
+                Set(enemy);
+                // field[enemy.X(), enemy.Y()] = enemy;
+                // Console.SetCursorPosition(enemy.X(), enemy.Y());
+                // Console.Write(enemy.symbol);
             }
         }
 
@@ -147,6 +147,13 @@ namespace mtvo_thread_war
                 Console.SetCursorPosition(actor.X(), actor.Y());
                 Console.Write(BlunkSpaceChar);
             }
+        }
+
+        private void Set(Actor actor)
+        {
+            field[actor.X(), actor.Y()] = actor;
+            Console.SetCursorPosition(actor.X(), actor.Y());
+            Console.Write(actor.symbol);
         }
 
         private void MoveGun(int direction)
