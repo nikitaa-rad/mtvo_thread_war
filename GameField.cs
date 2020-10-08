@@ -21,7 +21,7 @@ namespace mtvo_thread_war
         private int hit;
         private int fieldWith;
         private int fieldHigh;
-        private string[,] field;
+        private Actor[,] field;
         
         private Actor gun;
         private Bullet bullet;
@@ -30,7 +30,7 @@ namespace mtvo_thread_war
         {
             fieldWith = with;
             fieldHigh = high;
-            field = new string[fieldWith, fieldHigh];
+            field = new Actor[fieldWith, fieldHigh];
             miss = 0;
             hit = 0;
             gun = new Actor(fieldWith/2, fieldHigh - 1, GunChar);
@@ -94,21 +94,29 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                if (field[bullet.X(), bullet.Y()].Equals(EnemyChar))
-                {
-                    
-                    bullet.symbol = KilledChar;
-                    field[bullet.X(), bullet.Y()] = KilledChar;
-                    return;
-                }
+                // if (field[bullet.X(), bullet.Y()].Equals(EnemyChar))
+                // {
+                //     bullet.symbol = KilledChar;
+                //     field[bullet.X(), bullet.Y()] = KilledChar;
+                //     return;
+                // }
                 
-                field[bullet.X(), bullet.Y()] = BlunkSpaceChar;
+                
+                // if enemy
+                // {
+                //     
+                // } 
+                // else
+                // {
+                Actor blunk = new Actor(bullet.X(), bullet.Y(),BlunkSpaceChar);
+                field[bullet.X(), bullet.Y()] = blunk;
                 Console.SetCursorPosition(bullet.X(), bullet.Y());
-                Console.Write(BlunkSpaceChar);
+                Console.Write(BlunkSpaceChar);  
+                // }
     
                 bullet.SetCoordinates(bullet.X(), bullet.Y() - 1);
 
-                field[bullet.X(), bullet.Y()] = bullet.symbol;
+                field[bullet.X(), bullet.Y()] = bullet;
                 Console.SetCursorPosition(bullet.X(), bullet.Y());
                 Console.Write(bullet.symbol);
             }
@@ -128,7 +136,7 @@ namespace mtvo_thread_war
                 
                 enemy.SetCoordinates(enemy.X() + direction, enemy.Y() + 1);
 
-                field[enemy.X(), enemy.Y()] = enemy.symbol;
+                field[enemy.X(), enemy.Y()] = enemy;
                 Console.SetCursorPosition(enemy.X(), enemy.Y());
                 Console.Write(enemy.symbol);
             }
@@ -138,7 +146,8 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                field[actor.X(), actor.Y()] = BlunkSpaceChar;
+                Actor blunk = new Actor(actor.X(), actor.Y(),BlunkSpaceChar);
+                field[actor.X(), actor.Y()] = blunk;
                 Console.SetCursorPosition(actor.X(), actor.Y());
                 Console.Write(BlunkSpaceChar);
             }
@@ -152,13 +161,10 @@ namespace mtvo_thread_war
             {
                 lock (fieldLock)
                 {
-                    // field[gun.X(), gun.Y()] = BlunkSpaceChar;
-                    // Console.SetCursorPosition(gun.X(), gun.Y());
-                    // Console.Write(BlunkSpaceChar);
                     Clean(gun);
                     gun.SetCoordinates(coordinate, gun.Y());
 
-                    field[gun.X(), gun.Y()] = gun.symbol;
+                    field[gun.X(), gun.Y()] = gun;
                     Console.SetCursorPosition(gun.X(), gun.Y());
                     Console.Write(gun.symbol);
                 }
@@ -168,7 +174,6 @@ namespace mtvo_thread_war
         private void Shot()
         {
             Thread thread = new Thread(delegate() { bullet.Fire(gun.X(), fieldHigh - 2); });
-            thread.Name = gun.X().ToString();
             thread.Start();
         }
 
@@ -178,7 +183,8 @@ namespace mtvo_thread_war
             {
                 for (int j = 0; j < field.GetLength(1); j++)
                 {
-                    field[i, j] = BlunkSpaceChar;
+                    Actor blunk = new Actor(i, j,BlunkSpaceChar);
+                    field[i, j] = blunk;
                 }
             }
         }

@@ -9,15 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb967739-33e1-4829-8913-679bce5bef9a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EnemyPull.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Actor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bomb.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Coordinate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Coordinate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameField.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Gun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task.txt" beforeDir="false" afterPath="$PROJECT_DIR$/task.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +40,10 @@
         <option value="$PROJECT_DIR$/ThreadWar.cs" />
         <option value="$PROJECT_DIR$/Coordinate.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
-        <option value="$PROJECT_DIR$/Actor.cs" />
         <option value="$PROJECT_DIR$/EnemyPull.cs" />
-        <option value="$PROJECT_DIR$/GameField.cs" />
         <option value="$PROJECT_DIR$/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Actor.cs" />
+        <option value="$PROJECT_DIR$/GameField.cs" />
       </list>
     </option>
   </component>
@@ -106,7 +99,7 @@
       <workItem from="1601928224583" duration="1103000" />
       <workItem from="1602013610643" duration="7414000" />
       <workItem from="1602097922764" duration="13326000" />
-      <workItem from="1602178291368" duration="13388000" />
+      <workItem from="1602178291368" duration="14346000" />
     </task>
     <servers />
   </component>
@@ -143,25 +136,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="501" y="162" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1602179188717" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1602194799630">
+    <state width="1398" height="323" key="GridCell.Tab.0.bottom" timestamp="1602195278127">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1602194799630" />
+    <state width="1398" height="323" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1602195278127" />
     <state width="1358" height="233" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1601361551937" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1602194799629">
+    <state width="1398" height="323" key="GridCell.Tab.0.center" timestamp="1602195278126">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1602194799629" />
+    <state width="1398" height="323" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1602195278126" />
     <state width="1358" height="233" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1601361551936" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1602194799629">
+    <state width="1398" height="323" key="GridCell.Tab.0.left" timestamp="1602195278125">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1602194799629" />
+    <state width="1398" height="323" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1602195278125" />
     <state width="1358" height="233" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1601361551935" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1602194799630">
+    <state width="1398" height="323" key="GridCell.Tab.0.right" timestamp="1602195278127">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="291" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1602194799630" />
+    <state width="1398" height="323" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1602195278127" />
     <state width="1358" height="233" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1601361551937" />
     <state width="1398" height="445" key="GridCell.Tab.1.bottom" timestamp="1602194638121">
       <screen x="0" y="0" width="1440" height="900" />
@@ -247,24 +240,5 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1602101050228" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/GameField.cs</url>
-          <line>99</line>
-          <properties documentPath="$PROJECT_DIR$/GameField.cs" initialLine="99">
-            <startOffsets>
-              <option value="2661" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2688" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

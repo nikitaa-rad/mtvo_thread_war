@@ -2,6 +2,7 @@ namespace mtvo_thread_war
 {
     public class Actor
     {
+        public bool killed;
         private int x;
         private int y;
         public string symbol;
@@ -11,6 +12,7 @@ namespace mtvo_thread_war
             this.x = x;
             this.y = y;
             this.symbol = symbol;
+            killed = false;
         }
 
         public int X() { return x; }
