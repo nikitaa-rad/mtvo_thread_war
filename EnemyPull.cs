@@ -17,13 +17,14 @@ namespace mtvo_thread_war
             Actor enemy = new Actor(RandomX(),1,GameField.EnemyChar);
             int direction = 1;
             
-            while (enemy.Y() < gameField.FieldHigh() - 1 && enemy.symbol != GameField.KilledChar)
+            while (enemy.Y() < gameField.FieldHigh() - 1 && !enemy.killed)
             {
                 gameField.MoveEnemy(enemy, direction);
-                Thread.Sleep(1000);
+                
                 direction *= -1;
+                
+                Thread.Sleep(1000);
             }
-            
             gameField.Clean(enemy);
 
             gameField.IncreaseMissScore();

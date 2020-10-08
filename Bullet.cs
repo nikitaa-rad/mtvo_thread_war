@@ -20,17 +20,13 @@ namespace mtvo_thread_war
             Actor bullet = new Actor(x, y, GameField.BulletChar);
             
             sem.WaitOne();
-            while (bullet.Y() != 0 && bullet.symbol != GameField.KilledChar)
+            while (bullet.Y() != 0 && !bullet.killed)
             {
                 gameField.MoveBullet(bullet);
                 
                 Thread.Sleep(200);
             }
-
-            // if (bullet.symbol != GameField.KilledChar)
-            // {
             gameField.Clean(bullet);
-            //}
             
             sem.Release();
         }

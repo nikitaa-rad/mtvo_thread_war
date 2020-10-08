@@ -13,7 +13,7 @@ namespace mtvo_thread_war
         public const string EnemyChar = "Ж";
         public const string KilledChar = "R";
 
-        public const int MaxMiss = 3;
+        public const int MaxMiss = 30;
         
         private readonly object fieldLock = new object();
         
@@ -63,7 +63,7 @@ namespace mtvo_thread_war
 
         private void PullEnemies()
         {
-            int timeout = 1000;
+            int timeout = 2000;
             
             while (true)
             {
@@ -90,30 +90,32 @@ namespace mtvo_thread_war
             }
         }
         
+        public void IncreaseHitScore()
+        {
+            lock (fieldLock)
+            {
+                hit += 1;
+                PrintScore();
+            }
+        }
+        
         public void MoveBullet(Actor bullet)
         {
             lock (fieldLock)
             {
-                // if (field[bullet.X(), bullet.Y()].Equals(EnemyChar))
-                // {
-                //     bullet.symbol = KilledChar;
-                //     field[bullet.X(), bullet.Y()] = KilledChar;
-                //     return;
-                // }
+                if (field[bullet.X(), bullet.Y() - 1].symbol.Equals(EnemyChar))
+                {
+                    field[bullet.X(), bullet.Y() - 1].killed = true;
+                    bullet.killed = true;
+                    IncreaseHitScore();
+                    return;
+                }
                 
-                
-                // if enemy
-                // {
-                //     
-                // } 
-                // else
-                // {
                 Actor blunk = new Actor(bullet.X(), bullet.Y(),BlunkSpaceChar);
                 field[bullet.X(), bullet.Y()] = blunk;
                 Console.SetCursorPosition(bullet.X(), bullet.Y());
-                Console.Write(BlunkSpaceChar);  
-                // }
-    
+                Console.Write(BlunkSpaceChar);
+
                 bullet.SetCoordinates(bullet.X(), bullet.Y() - 1);
 
                 field[bullet.X(), bullet.Y()] = bullet;
@@ -126,12 +128,6 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                if (field[enemy.X(), enemy.Y()].Equals(KilledChar))
-                {
-                    enemy.symbol = KilledChar;
-                    return;
-                }
-
                 Clean(enemy);
                 
                 enemy.SetCoordinates(enemy.X() + direction, enemy.Y() + 1);
