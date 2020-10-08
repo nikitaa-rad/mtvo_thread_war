@@ -1,23 +1,24 @@
 namespace mtvo_thread_war
 {
-    public class Point
+    public class Actor
     {
         private int x;
         private int y;
+        public string symbol;
 
-        public Point(int x, int y)
+        public Actor(int x, int y, string symbol)
         {
             this.x = x;
             this.y = y;
+            this.symbol = symbol;
         }
-        
-        public int X { get; }
-        public int Y { get; }
 
-        public void SetCoordinates(int newX, int newY)
-        {
-            x = newX;
-            y = newY;
-        }
+        public int X() { return x; }
+
+        public int Y() { return y; }
+
+       // public string Symbol() { return symbol; }
+
+        public void SetCoordinates(int newX, int newY) { x = newX; y = newY; }
     }
 }
