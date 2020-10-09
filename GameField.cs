@@ -9,7 +9,6 @@ namespace mtvo_thread_war
         public const string GunChar = "A";
         public const string BulletChar = "|";
         public const string EnemyChar = "Ж";
-        public const string KilledChar = "R";
 
         public const int MaxMiss = 30;
 
@@ -116,9 +115,6 @@ namespace mtvo_thread_war
 
                 bullet.SetCoordinates(bullet.X(), bullet.Y() - 1);
 
-                // field[bullet.X(), bullet.Y()] = bullet;
-                // Console.SetCursorPosition(bullet.X(), bullet.Y());
-                // Console.Write(bullet.symbol);
                 Set(bullet);
             }
         }
@@ -132,9 +128,6 @@ namespace mtvo_thread_war
                 enemy.SetCoordinates(enemy.X() + direction, enemy.Y() + 1);
 
                 Set(enemy);
-                // field[enemy.X(), enemy.Y()] = enemy;
-                // Console.SetCursorPosition(enemy.X(), enemy.Y());
-                // Console.Write(enemy.symbol);
             }
         }
 
@@ -151,9 +144,12 @@ namespace mtvo_thread_war
 
         private void Set(Actor actor)
         {
-            field[actor.X(), actor.Y()] = actor;
-            Console.SetCursorPosition(actor.X(), actor.Y());
-            Console.Write(actor.symbol);
+            lock (fieldLock)
+            {
+                field[actor.X(), actor.Y()] = actor;
+                Console.SetCursorPosition(actor.X(), actor.Y());
+                Console.Write(actor.symbol);
+            }
         }
 
         private void MoveGun(int direction)
@@ -207,7 +203,7 @@ namespace mtvo_thread_war
         private void CloseGame()
         {
             Console.Clear();
-            Console.Write("YOU LOST!");
+            Console.Write("YOU LOST!!!");
             Environment.Exit(0);
         }
     }

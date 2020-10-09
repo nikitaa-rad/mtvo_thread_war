@@ -18,9 +18,7 @@ namespace mtvo_thread_war
         public int X() { return x; }
 
         public int Y() { return y; }
-
-       // public string Symbol() { return symbol; }
-
+        
         public void SetCoordinates(int newX, int newY) { x = newX; y = newY; }
     }
 }
