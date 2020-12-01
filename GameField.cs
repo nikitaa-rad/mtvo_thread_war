@@ -5,14 +5,11 @@ namespace mtvo_thread_war
 {
     public class GameField
     {
-        //Символи акторів консолі
-        public const string BlunkSpaceChar = " ";
-        public const string GunChar = "A";
+        private const string BlunkSpaceChar = " ";
+        private const string GunChar = "A";
         public const string BulletChar = "|";
         public const string EnemyChar = "Ж";
-        //Число промахів, після якого гра завершується
-        public const int MaxMiss = 30;
-        // Локер поля для синхронізації, робить те ж саме, що і м'ютекс
+        private const int MaxMiss = 30;
         private readonly object fieldLock = new object();
 
         private int miss;
@@ -32,13 +29,12 @@ namespace mtvo_thread_war
             miss = 0;
             hit = 0;
             gun = new Actor(fieldWith/2, fieldHigh - 1, GunChar);
-            //Ініціалізуємо клас кулі з семафором
             bullet = new Bullet(this);
-            //Ініціалізація поля
+
             FillBlank();
-            //Виводимо рахунок
+
             PrintScore();
-            //Віводимо кулю
+
             MoveGun(-1);
         }
         
@@ -47,10 +43,9 @@ namespace mtvo_thread_war
 
         public void Start()
         {
-            //Виводимо ворогів у новому потоці
             Thread thread = new Thread(PullEnemies);
             thread.Start();
-            //Слідкуємо за клавішами
+
             while (true)
             {
                 if (Console.ReadKey().Key.Equals(ConsoleKey.LeftArrow)) { MoveGun(-1); }
@@ -63,7 +58,6 @@ namespace mtvo_thread_war
 
         private void PullEnemies()
         {
-            //Створюємо потоки ворогів, тільки якщо рандом вирішує їм з'явитися
             while (true)
             {
                 EnemyPull enemy = new EnemyPull(this);
@@ -78,7 +72,6 @@ namespace mtvo_thread_war
 
         public void IncreaseMissScore()
         {
-            //Збільшення числа промахів
             lock (fieldLock)
             {
                 miss += 1;
@@ -92,7 +85,6 @@ namespace mtvo_thread_war
         
         public void IncreaseHitScore()
         {
-            //Збільшення числа влучень
             lock (fieldLock)
             {
                 hit += 1;
@@ -104,22 +96,20 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                //Перевірка на наявність ворога
                 if (field[bullet.X(), bullet.Y() - 1].symbol.Equals(EnemyChar))
                 {
-                    //Маркер для того, щоб вбити потоки кулі та ворога
                     field[bullet.X(), bullet.Y() - 1].killed = true;
                     bullet.killed = true;
                     //Збільшуємо очки
                     IncreaseHitScore();
                     return;
                 }
-                //Очищуємо кулю
+
                 Actor blunk = new Actor(bullet.X(), bullet.Y(),BlunkSpaceChar);
                 field[bullet.X(), bullet.Y()] = blunk;
                 Console.SetCursorPosition(bullet.X(), bullet.Y());
                 Console.Write(BlunkSpaceChar);
-                //Ставимо кулю
+
                 bullet.SetCoordinates(bullet.X(), bullet.Y() - 1);
                 
                 Set(bullet);
@@ -130,11 +120,10 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                //Зтераємо попередню координату ворога
                 Clean(enemy);
-                //Оновлюємо координати ворога
+
                 enemy.SetCoordinates(enemy.X() + direction, enemy.Y() + 1);
-                //Ставимо нову ворога
+
                 Set(enemy);
             }
         }
@@ -143,7 +132,6 @@ namespace mtvo_thread_war
         {
             lock (fieldLock)
             {
-                //Ставимо пустого актора на місце діючої особи
                 Actor blunk = new Actor(actor.X(), actor.Y(),BlunkSpaceChar);
                 field[actor.X(), actor.Y()] = blunk;
                 Console.SetCursorPosition(actor.X(), actor.Y());
@@ -153,7 +141,6 @@ namespace mtvo_thread_war
 
         private void Set(Actor actor)
         {
-            // Метод для оновлення координат актора та виводу на єкран
             lock (fieldLock)
             {
                 field[actor.X(), actor.Y()] = actor;
@@ -165,17 +152,15 @@ namespace mtvo_thread_war
         private void MoveGun(int direction)
         {
             int coordinate = gun.X() + direction;
-            // Необхідно для того, щоб гармата не заходила за вікно
+
             if (coordinate < fieldWith && coordinate >= 0)
             {
                 lock (fieldLock)
                 {
-                    //Зтераємо попередню координату гармати
                     Clean(gun);
-                    //Оновлюємо координати гармати
+
                     gun.SetCoordinates(coordinate, gun.Y());
 
-                    //Ставимо нову координату
                     Set(gun);
                 }
             }
@@ -183,14 +168,12 @@ namespace mtvo_thread_war
 
         private void Shot()
         {
-            // Постріл. Виліт кулі з координати гармати
             Thread thread = new Thread(delegate() { bullet.Fire(gun.X(), fieldHigh - 2); });
             thread.Start();
         }
 
         private void FillBlank()
         {
-            //Заповнюємо поле пустими акторами
             for (int i = 0; i < field.GetLength(0); i++)
             {
                 for (int j = 0; j < field.GetLength(1); j++)
@@ -203,9 +186,8 @@ namespace mtvo_thread_war
 
         private bool ShouldPoolEnemy()
         {
-            // Рандомне число від 0 до 10, якщо воно більше 6 - ворог з'явиться.
             Random rnd = new Random();
-            // З часом верхня граніця збільшується, тим самим зростає верогідність появи ворога
+
             int number = rnd.Next(0, miss + 10);
             
             return number > 6;
@@ -213,7 +195,6 @@ namespace mtvo_thread_war
 
         private void PrintScore()
         {
-            //Виводить рахунок
             lock (fieldLock)
             {
                 Console.SetCursorPosition(0, 0);
@@ -226,7 +207,6 @@ namespace mtvo_thread_war
 
         private void CloseGame()
         {
-            // Заверщення гри
             Console.Clear();
             Console.Write("YOU LOST!!!");
             Environment.Exit(0);
